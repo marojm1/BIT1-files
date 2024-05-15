@@ -13,10 +13,9 @@
 -- Course table
 CREATE TABLE Course (
   title TEXT,
-  course_id INTEGER,
+  course_id INTEGER PRIMARY KEY,
   status TEXT,
   student_id INTEGER,
-  Primary key (course_id, student_id),
   FOREIGN KEY (student_id) REFERENCES Students(student_id)
   );
 
@@ -25,14 +24,14 @@ CREATE TABLE Payments (
   amount REAL,
   debt REAL,
   course_id INTEGER,
-  student_id INTEGER,
+  student_id INTEGER PRIMARY KEY,
   FOREIGN KEY (student_id) REFERENCES Students(student_id),
   FOREIGN KEY (course_id) REFERENCES Course(course_id)
 );
 
 CREATE TABLE PaymentCourse (
   course_id INTEGER,
-  student_id INTEGER,
+  student_id INTEGER PRIMARY KEY,
   FOREIGN KEY (student_id) REFERENCES Students(student_id),
   FOREIGN KEY (course_id) REFERENCES Course(course_id)
 );
@@ -40,7 +39,7 @@ CREATE TABLE PaymentCourse (
 -- StudentCourse table
 CREATE TABLE StudentCourse (
   course_id INTEGER,
-  student_id INTEGER,
+  student_id INTEGER PRIMARY KEY,
   FOREIGN KEY (student_id) REFERENCES Students(student_id),
   FOREIGN KEY (course_id) REFERENCES Course(course_id)
 );
@@ -49,8 +48,7 @@ CREATE TABLE StudentCourse (
 CREATE TABLE Events (
   event_name TEXT,
   student_id INTEGER,
-  event_id INTEGER ,
-  PRIMARY KEY (event_id, student_id),
+  event_id INTEGER PRIMARY KEY,
   FOREIGN KEY (student_id) REFERENCES Students(student_id)
 );
 
